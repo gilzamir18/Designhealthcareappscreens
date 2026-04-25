@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { ClipboardList, Plus } from 'lucide-react';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Button } from './ui/button';
@@ -114,12 +115,22 @@ export function HealthIntake() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-8" style={{ backgroundColor: '#f0f4f8' }}>
-      <div className="w-full max-w-[480px] bg-white rounded-lg p-8 shadow-sm">
+      <div className="w-full max-w-[520px] bg-white rounded-lg p-8 shadow-sm">
+        {/* Logo SPL */}
+        <div className="flex items-center justify-center mb-6">
+          <div
+            className="w-12 h-12 rounded-lg flex items-center justify-center"
+            style={{ backgroundColor: '#1E6F5C' }}
+          >
+            <Plus className="w-6 h-6 text-white" strokeWidth={3} />
+          </div>
+        </div>
+
         {/* Indicador de progresso */}
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-2">
-            <div 
-              className="h-2 flex-1 rounded-full"
+            <div
+              className="h-2 flex-1 rounded-full transition-all"
               style={{ backgroundColor: '#1E6F5C' }}
             />
             <div className="h-2 flex-1 rounded-full bg-gray-200" />
@@ -128,10 +139,13 @@ export function HealthIntake() {
         </div>
 
         {/* Cabeçalho */}
-        <div className="mb-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-2">Triagem de saúde</h2>
+        <div className="mb-6 text-center">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <ClipboardList className="w-6 h-6" style={{ color: '#1E6F5C' }} />
+            <h2 className="text-2xl font-semibold text-gray-900">Triagem de saúde</h2>
+          </div>
           <p className="text-sm text-gray-600">
-            Responda com atenção para montarmos seu perfil.
+            Responda com atenção para montarmos seu perfil personalizado.
           </p>
         </div>
 
@@ -221,7 +235,7 @@ export function HealthIntake() {
             <Label className="text-sm text-gray-700 mb-2 block">
               Você possui alguma condição de saúde diagnosticada?
             </Label>
-            <div className="space-y-2">
+            <div className="space-y-2 bg-gray-50 p-4 rounded-lg">
               {condicoesSaudeOptions.map((condition) => (
                 <div key={condition.id} className="flex items-center space-x-2">
                   <Checkbox
